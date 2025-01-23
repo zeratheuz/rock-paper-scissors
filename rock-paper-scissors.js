@@ -1,5 +1,5 @@
 function getComputerChoice () {
-  randomNumber = Math.ceil(Math.random() * 3)
+  let randomNumber = Math.ceil(Math.random() * 3)
   switch (randomNumber) {
     case 1:
       return "rock"
@@ -10,4 +10,9 @@ function getComputerChoice () {
   }
 }
 
-console.log(getComputerChoice())
+function getHumanChoice () {
+  let humanChoice = prompt("Rock, Paper or Scissors?")
+  return humanChoice
+}
+
+console.log(getHumanChoice())
