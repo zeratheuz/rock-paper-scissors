@@ -11,7 +11,8 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-  let humanChoice = prompt("Rock, Paper or Scissors?").toLowerCase()
+  let humanChoice = ""
+  humanChoice = prompt("Rock, Paper or Scissors?").toLowerCase()
   if (humanChoice == "rock" || humanChoice == "paper" || humanChoice == "scissors") {
     return humanChoice
   } else {
@@ -20,8 +21,7 @@ function getHumanChoice() {
   }
 }
   
-function playGame() {
-  
+function playGame() {  
   let humanScore = 0
   let computerScore = 0
 
@@ -32,17 +32,23 @@ function playGame() {
       } else if (humanChoice == "rock" && computerChoice == "paper") {
       computerScore++
       console.log("You Lose! Paper beats Rock!", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
+    } else if (humanChoice == "paper" && computerChoice == "scissors") {
+      computerScore++
+      console.log("You Lose! Scissors beats Paper!", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
       } else if (humanChoice == "scissors" && computerChoice == "rock") {
       computerScore++
       console.log("You Lose! Rock beats Scissors!", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-    } else if (humanChoice == "paper" && computerChoice == "rock") {
-      humanScore++
-      console.log("You Win! Paper beats Rock!", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
     } else if (humanChoice == "rock" && computerChoice == "scissors") {
       humanScore++
       console.log("You Win! Rock beats Scissors!", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-      }
+    } else if (humanChoice == "paper" && computerChoice == "rock") {
+      humanScore++
+      console.log("You Win! Paper beats Rock!", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
+    } else if (humanChoice == "scissors" && computerChoice == "paper") {
+      humanScore++
+      console.log("You Win! Scissors beats Paper!", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
     }
+  }
 
   for (i = 0; i < 5; i++) {    
     const humanSelection = getHumanChoice()
@@ -52,13 +58,12 @@ function playGame() {
   }
 
   if (humanScore > computerScore) {
-    console.log("YOU WIN!")
+    alert("YOU WIN!" + `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
   } else if (humanScore < computerScore) {
-    console.log("YOU LOSE!")
+    alert("YOU LOSE!" + `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
   } else {
-    console.log("UNBELIEVABLE DRAW!")
+    alert("UNBELIEVABLE DRAW!" + `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
   }
-    
 }
 
 playGame()
