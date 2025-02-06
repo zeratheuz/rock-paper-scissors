@@ -28,25 +28,16 @@ function playGame() {
   function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase()
     if (humanChoice === computerChoice) {
-      console.log("DRAW", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-      } else if (humanChoice == "rock" && computerChoice == "paper") {
+      alert("DRAW", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
+      } else if (
+        humanChoice == "rock" && computerChoice == "paper" || 
+        humanChoice == "paper" && computerChoice == "scissors" || 
+        humanChoice == "scissors" && computerChoice == "rock") {
       computerScore++
-      console.log("You Lose! Paper beats Rock!", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-    } else if (humanChoice == "paper" && computerChoice == "scissors") {
-      computerScore++
-      console.log("You Lose! Scissors beats Paper!", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-      } else if (humanChoice == "scissors" && computerChoice == "rock") {
-      computerScore++
-      console.log("You Lose! Rock beats Scissors!", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-    } else if (humanChoice == "rock" && computerChoice == "scissors") {
+      alert(`You Lose! ${computerChoice} beats ${humanChoice}! \nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
+    } else {
       humanScore++
-      console.log("You Win! Rock beats Scissors!", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-    } else if (humanChoice == "paper" && computerChoice == "rock") {
-      humanScore++
-      console.log("You Win! Paper beats Rock!", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-    } else if (humanChoice == "scissors" && computerChoice == "paper") {
-      humanScore++
-      console.log("You Win! Scissors beats Paper!", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
+      alert(`You Win! ${humanChoice} beats ${computerChoice}! \nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
     }
   }
 
