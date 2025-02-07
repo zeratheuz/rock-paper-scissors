@@ -23,20 +23,29 @@ const result = document.createElement("div")
 container.appendChild(result)
 
 function playRound(humanChoice, computerChoice) {
-  if (humanChoice === computerChoice) {
-    score.textContent = `SCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`
-    result.textContent = `DRAW! ${computerChoice} is equal ${humanChoice}!`
-    } else if (
-      humanChoice == "rock" && computerChoice == "paper" || 
-      humanChoice == "paper" && computerChoice == "scissors" || 
-      humanChoice == "scissors" && computerChoice == "rock") {
-    computerScore++
-    result.textContent = `You Lose! ${computerChoice} beats ${humanChoice}!`
-    score.textContent = `SCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`
+  if (humanScore === 5 || computerScore  === 5){
+    if (humanScore > computerScore) {
+      alert("YOU WIN!" + `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
+    } else {
+      alert("YOU LOSE!" + `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
+    } 
+    location.reload()
   } else {
-    humanScore++
-    result.textContent = `You Win! ${humanChoice} beats ${computerChoice}!`
-    score.textContent = `SCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`
+    if (humanChoice === computerChoice) {
+      score.textContent = `SCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`
+      result.textContent = `DRAW! ${computerChoice} is equal ${humanChoice}!`
+      } else if (
+        humanChoice == "rock" && computerChoice == "paper" || 
+        humanChoice == "paper" && computerChoice == "scissors" || 
+        humanChoice == "scissors" && computerChoice == "rock") {
+      computerScore++
+      result.textContent = `You Lose! ${computerChoice} beats ${humanChoice}!`
+      score.textContent = `SCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`
+    } else {
+      humanScore++
+      result.textContent = `You Win! ${humanChoice} beats ${computerChoice}!`
+      score.textContent = `SCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`
+    }
   }
 }
 
@@ -46,26 +55,3 @@ buttons.forEach((button) => {
     playRound(getHumanChoice(button), getComputerChoice())
   })
 })
-
-
-
-// function playGame() {  
-
-
-//   for (i = 0; i < 5; i++) {    
-//     const humanSelection = getHumanChoice()
-//     const computerSelection = getComputerChoice()
-    
-//     playRound(humanSelection, computerSelection)
-//   }
-
-//   if (humanScore > computerScore) {
-//     console.log("YOU WIN!" + `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-//   } else if (humanScore < computerScore) {
-//     console.log("YOU LOSE!" + `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-//   } else {
-//     console.log("UNBELIEVABLE DRAW!" + `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-//   }
-// }
-
-// playGame()
