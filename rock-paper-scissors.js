@@ -3,58 +3,61 @@ function getComputerChoice() {
   switch (randomNumber) {
     case 1:
       return "rock"
-    case 2:
-      return "paper"
-    case 3:
-      return "scissors"
-  }
+      case 2:
+        return "paper"
+        case 3:
+          return "scissors"
+        }
+      }
+      
+function getHumanChoice(e) {
+  return e.id
 }
 
-function getHumanChoice() {
-  let humanChoice = ""
-  humanChoice = prompt("Rock, Paper or Scissors?").toLowerCase()
-  if (humanChoice == "rock" || humanChoice == "paper" || humanChoice == "scissors") {
-    return humanChoice
+let humanScore = 0
+let computerScore = 0
+
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice === computerChoice) {
+    console.log("DRAW", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
+    } else if (
+      humanChoice == "rock" && computerChoice == "paper" || 
+      humanChoice == "paper" && computerChoice == "scissors" || 
+      humanChoice == "scissors" && computerChoice == "rock") {
+    computerScore++
+    console.log(`You Lose! ${computerChoice} beats ${humanChoice}! \nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
   } else {
-    humanChoice = getHumanChoice()
-    return humanChoice
+    humanScore++
+    console.log(`You Win! ${humanChoice} beats ${computerChoice}! \nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
   }
 }
-  
-function playGame() {  
-  let humanScore = 0
-  let computerScore = 0
 
-  function playRound(humanChoice, computerChoice) {
-    humanChoice = humanChoice.toLowerCase()
-    if (humanChoice === computerChoice) {
-      alert("DRAW", `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-      } else if (
-        humanChoice == "rock" && computerChoice == "paper" || 
-        humanChoice == "paper" && computerChoice == "scissors" || 
-        humanChoice == "scissors" && computerChoice == "rock") {
-      computerScore++
-      alert(`You Lose! ${computerChoice} beats ${humanChoice}! \nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-    } else {
-      humanScore++
-      alert(`You Win! ${humanChoice} beats ${computerChoice}! \nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-    }
-  }
+const buttons = document.querySelectorAll("button")
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    playRound(getHumanChoice(button), getComputerChoice())
+  })
+})
 
-  for (i = 0; i < 5; i++) {    
-    const humanSelection = getHumanChoice()
-    const computerSelection = getComputerChoice()
+
+
+// function playGame() {  
+
+
+//   for (i = 0; i < 5; i++) {    
+//     const humanSelection = getHumanChoice()
+//     const computerSelection = getComputerChoice()
     
-    playRound(humanSelection, computerSelection)
-  }
+//     playRound(humanSelection, computerSelection)
+//   }
 
-  if (humanScore > computerScore) {
-    alert("YOU WIN!" + `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-  } else if (humanScore < computerScore) {
-    alert("YOU LOSE!" + `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-  } else {
-    alert("UNBELIEVABLE DRAW!" + `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
-  }
-}
+//   if (humanScore > computerScore) {
+//     console.log("YOU WIN!" + `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
+//   } else if (humanScore < computerScore) {
+//     console.log("YOU LOSE!" + `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
+//   } else {
+//     console.log("UNBELIEVABLE DRAW!" + `\nSCORE: HUMAN = ${humanScore} || COMPUTER = ${computerScore}`)
+//   }
+// }
 
-playGame()
+// playGame()
