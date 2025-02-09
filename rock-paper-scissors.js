@@ -3,13 +3,13 @@ function getComputerChoice() {
   switch (randomNumber) {
     case 1:
       return "rock"
-      case 2:
-        return "paper"
-        case 3:
-          return "scissors"
-        }
-      }
-      
+    case 2:
+      return "paper"
+    case 3:
+      return "scissors"
+  }
+}
+
 function getHumanChoice(e) {
   return e.id
 }
@@ -20,29 +20,35 @@ const container = document.querySelector("#container")
 const result = document.querySelector("#result")
 const displayHumanScore = document.querySelector("#humanScore")
 const displayComputerScore = document.querySelector("#computerScore")
+const humanOption = document.querySelector("#humanOption")
+const computerOption = document.querySelector("#computerOption")
 
 function playRound(humanChoice, computerChoice) {
-  if (humanScore === 5 || computerScore === 5){
+  if (humanScore === 5 || computerScore === 5) {
     if (humanScore > computerScore) {
       alert("YOU WIN!")
     } else {
       alert("YOU LOSE!")
-    } 
+    }
     location.reload()
   } else {
     if (humanChoice === computerChoice) {
       result.textContent = `DRAW! ${computerChoice} is equal ${humanChoice}!`
-      } else if (
-        humanChoice == "rock" && computerChoice == "paper" || 
-        humanChoice == "paper" && computerChoice == "scissors" || 
-        humanChoice == "scissors" && computerChoice == "rock") {
-          computerScore++
-          displayComputerScore.textContent = computerScore
-          result.textContent = `You Lose! ${computerChoice} beats ${humanChoice}!`
-      } else {
-        humanScore++
-        displayHumanScore.textContent = humanScore
-        result.textContent = `You Win! ${humanChoice} beats ${computerChoice}!`
+    } else if (
+      humanChoice == "rock" && computerChoice == "paper" ||
+      humanChoice == "paper" && computerChoice == "scissors" ||
+      humanChoice == "scissors" && computerChoice == "rock") {
+      computerOption.src = `images/${computerChoice}.png`
+      humanOption.src = `images/${humanChoice}.png`
+      computerScore++
+      displayComputerScore.textContent = computerScore
+      result.textContent = `You Lose! ${computerChoice} beats ${humanChoice}!`
+    } else {
+      computerOption.src = `images/${computerChoice}.png`
+      humanOption.src = `images/${humanChoice}.png`
+      humanScore++
+      displayHumanScore.textContent = humanScore
+      result.textContent = `You Win! ${humanChoice} beats ${computerChoice}!`
     }
   }
 }
