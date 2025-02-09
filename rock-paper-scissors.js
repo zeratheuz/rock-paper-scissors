@@ -33,6 +33,8 @@ function playRound(humanChoice, computerChoice) {
     location.reload()
   } else {
     if (humanChoice === computerChoice) {
+      computerOption.src = `images/${computerChoice}.png`
+      humanOption.src = `images/${humanChoice}.png`
       result.textContent = `DRAW! ${computerChoice} is equal ${humanChoice}!`
     } else if (
       humanChoice == "rock" && computerChoice == "paper" ||
